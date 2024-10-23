@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Announcements</title>
+
+    <!-- Google Fonts (Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+        /* Body Reset */
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #000;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #FFD726;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            border-radius: 25px;
+        }
+
+        .navbar-title {
+            font-size: 1.5rem;
+            color: #FFF;
+            text-transform: uppercase;
+        }
+
+        .exit-btn {
+            padding: 0.4rem 1.5rem;
+            font-size: 1.2rem;
+            background-color: #EB8E27;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Parent Grid Container (2x2) */
+        .parent {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 10px;
+            height: calc(100vh - 120px); /* Full height minus navbar and margins */
+            margin: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Individual Div Styles */
+        .div {
+            background-color: #F1F9EC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        /* Marquee */
+        .marquee {
+            background-color: #EB8E27;
+            color: white;
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 10s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .parent {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-title">Announcements</div>
+        <button class="exit-btn" onclick="window.location.href='homepage.html'">×</button>
+    </nav>
+
+    <div class="marquee">
+        <div class="marquee-content">Undas 2024 and we need to clean grandpa's tomb</div>
+    </div>
+
+    <div class="parent">
+        <div class="div">Chat Section</div>
+        <div class="div">YouTube Section</div>
+        <div class="div">Directory Mail</div>
+        <div class="div">Announcements Section</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Announcements</title>
+
+    <!-- Google Fonts (Light Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+	
+	<style>
+
+    /* Body Reset */
+        html, body .mobile{
+            height: 100%;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+			color: #fff; 
+        }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0.5rem 1rem;
+			background-color: #FFD726;
+			box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+			margin: 20px 20px 2rem; /* Add space from the top, left, and right */
+			border-radius: 25px;
+        }
+
+        .navbar-title {
+            font-size: 0.9rem;
+            color: #FFF;
+            text-transform: uppercase;
+        }
+
+        .exit-btn {
+            padding: 0.4rem 1.5rem;
+            font-size: 1.2rem;
+            background-color: #EB8E27;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+			text-decoration: none;
+        }
+
+
+        /* Parent Stack Container */
+        .parent {
+            display: block; /* Change to block for stacking */
+            max-width: 1000px; /* Set max width */
+            margin: 0 auto; /* Center align */
+            height: calc(100vh - 20px); /* Full screen height minus padding */
+            padding: 10px; /* Small gaps on edges of the screen */
+            box-sizing: border-box; /* Include padding in height/width calculations */
+        }
+
+        /* Chat Box in div2 */
+        .div2 {
+            background-color: #F1F9EC;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Keep items aligned at the start */
+            padding: 10px;
+            border-radius: 10px;
+            overflow: hidden; /* Prevent overflow */
+            margin-bottom: 10px; /* Space between boxes */
+            box-shadow: 0 .2rem .5rem rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+        }
+
+        /* Chat Messages Container */
+        .chat-messages {
+            flex-grow: 1; /* Allow to grow and take remaining space */
+            padding: 10px; /* Inner padding */
+            margin-bottom: 10px; /* Space below messages */
+            overflow-y: auto; /* Enable scrolling for overflow */
+        }
+
+        /* Chat Messages */
+        .chat-message {
+            display: flex; /* Use flexbox */
+            justify-content: space-between; /* Space between message and timestamp */
+            padding: 20px;
+            background-color: #FFA500;
+            border-radius: 15px;
+            margin-bottom: 5px;
+            position: relative; /* Positioning relative to message */
+            overflow: hidden; /* Prevent overflow */
+            font-size: 0.8em;
+        }
+
+        /* Timestamp Style */
+        .timestamp {
+            font-size: 0.8em;
+            color: #fff;
+            margin-left: 10px; /* Space between message and timestamp */
+            align-self: flex-end; /* Aligns timestamp to the end of the message */
+        }
+
+        /* Announcement Section in div4 */
+        .div4 {
+            background-color: #F1F9EC;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch; /* Stretch announcements to full width */
+            gap: 10px; /* Space between announcements */
+            padding: 10px;
+            height: auto; /* Allow height to fit content */
+            border-radius: 10px;
+            margin-bottom: 10px; /* Space between boxes */
+        }
+
+        .announcement {
+            padding: 10px;
+            background-color: #FFD726;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center; /* Center align text */
+        }
+
+        /* Directory Mail */
+        .div3 {
+            background-color: #F5F5F7;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px; /* Space between boxes */
+            box-shadow: 0 .1rem .3rem rgba(0, 0, 0, 0.1); /* Add shadow */
+        }
+
+        /* YouTube Video Section */
+        .div1 {
+            background-color: #000000;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px; /* Space between boxes */
+        }
+
+        /* Chat Input Styles */
+        #nameInput, #messageText {
+            width: calc(100% - 50px); /* Adjust width for padding */
+            padding: 5px; /* Inner padding */
+            border: 2px solid #FFD726; /* Border color */
+            border-radius: 8px; /* Rounded corners */
+            outline: none; /* Remove default outline */
+            font-size: 0.9em; /* Font size */
+            transition: border-color 0.3s, box-shadow 0.3s; /* Transition effects */
+            margin-bottom: 10px; /* Space below the input */
+        }
+
+        /* Chat Input Focus Effect */
+        #nameInput:focus, #messageText:focus {
+            border-color: #FFA500; /* Darker border color on focus */
+            box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); /* Subtle shadow effect */
+        }
+
+        /* Send btn */
+        #sendButton {
+            padding: 0.2rem 0.5rem;
+            font-size: 1.2rem;
+            background-color: #EB8E27;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+			font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+        }
+
+        .marquee {
+            background-color: #EB8E27; /* Background color */
+            color: white;           /* Text color */
+            padding: 10px 0;       /* Padding for top and bottom */
+            overflow: hidden;       /* Hide overflow */
+            white-space: nowrap;    /* Prevent line breaks */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Optional shadow */
+            margin-bottom: 10px; /* Space below marquee */
+        }
+
+        .marquee-content {
+            display: inline-block;  /* Keep the content in a single line */
+            animation: marquee 10s linear infinite; /* Animation properties */
+        }
+
+        .read-btn {
+            margin-top: 5px;
+            padding: 5px 10px;
+            font-size: 0.9rem;
+            background-color: #EB8E27;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline */
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); } /* Start from the right */
+            100% { transform: translateX(-100%); } /* End on the left */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .parent {
+                padding: 5px; /* Adjust padding for smaller screens */
+            }
+            #nameInput, #messageText {
+                width: calc(100% - 30px); /* Adjust width for mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            #nameInput, #messageText {
+                width: calc(100% - 20px); /* Adjust width for mobile */
+            }
+        }
+		
+		</style>
+	
+	<script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+            import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyBW9I8ZpGQCYZH5n-us71Cfb_yunGMPCUs",
+                authDomain: "live-chat-testing-95232.firebaseapp.com",
+                projectId: "live-chat-testing-95232",
+                storageBucket: "live-chat-testing-95232.appspot.com",
+                messagingSenderId: "982255648611",
+                appId: "1:982255648611:web:da1255ce3152061e8a1d56"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+
+            // List of bad words to censor
+            const badWords = ['fuck', 'shit', 'cum']; // Replace with actual bad words
+
+            // Function to censor bad words
+            const censorBadWords = (message) => {
+                const regex = new RegExp(`\\b(${badWords.join('|')})\\b`, 'gi');
+                return message.replace(regex, (matched) => '*'.repeat(matched.length));
+            };
+
+            const sendMessage = async () => {
+                const nameInput = document.getElementById('nameInput');
+                const messageInput = document.getElementById('messageText');
+
+                const senderName = nameInput.value.trim();
+                let messageText = messageInput.value.trim();
+
+                if (senderName && messageText) {
+                    // Censor the message text
+                    messageText = censorBadWords(messageText);
+
+                    await addDoc(collection(db, 'messages'), {
+                        senderName,
+                        text: messageText,
+                        timestamp: new Date()
+                    });
+                    messageInput.value = ''; // Clear input field after sending
+                }
+            };
+
+            // Save the user's name to local storage
+            const nameInput = document.getElementById('nameInput');
+            nameInput.addEventListener('input', () => {
+                localStorage.setItem('username', nameInput.value);
+            });
+
+            // Load the user's name from local storage when the page loads
+            window.onload = () => {
+                const savedName = localStorage.getItem('username');
+                if (savedName) {
+                    nameInput.value = savedName;
+                }
+            };
+
+            const displayMessages = () => {
+                const chatMessages = document.getElementById('chatMessages');
+                const q = query(collection(db, 'messages'), orderBy('timestamp'));
+
+                onSnapshot(q, (snapshot) => {
+                    chatMessages.innerHTML = ''; // Clear previous messages
+                    snapshot.forEach((doc) => {
+                        const msg = doc.data();
+                        const messageElement = document.createElement('div');
+                        messageElement.classList.add('chat-message');
+                        messageElement.innerHTML = `<span>${msg.senderName}: ${msg.text}</span>
+                                                    <span class="timestamp">${new Date(msg.timestamp.seconds * 1000).toLocaleTimeString()}</span>`;
+                        chatMessages.appendChild(messageElement);
+                    });
+                    chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to latest message
+                });
+            };
+
+            document.getElementById('sendButton').addEventListener('click', sendMessage);
+            displayMessages();
+        </script>
+		
+</head>
+<body>
+    <div class="mobile">
+        <nav class="navbar">
+            <div class="navbar-title">Announcements</div>
+            <button class="exit-btn" onclick="window.location.href='homepage.html'">×</button>
+        </nav>
+
+        <div class="marquee">
+            <div class="marquee-content">Undas 2024 and we need to clean grandpa's tomb</div>
+        </div>
+
+        <div class="parent">
+            <div class="div1">
+                <!-- YouTube video embed -->
+                <iframe 
+                    width="100%" 
+                    height="300" 
+                    src="https://www.youtube.com/embed/nGDe0O5Tdbk?si=f47n29GilvG2yykw&autoplay=1&mute=1&loop=1&playlist=nGDe0O5Tdbk" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="div2">
+                <div class="chat-messages" id="chatMessages"></div>
+                <input type="text" id="nameInput" placeholder="Your name" required maxlength="15">
+                <input type="text" id="messageText" placeholder="Type a message (max 50 chars)" required maxlength="50">
+                <button id="sendButton">Send</button>
+            </div>
+            <div class="div4">
+                <div class="announcement">
+                    <p>Website Revamp</p>
+                    <a class="read-btn" href="reminder1.html" target="_blank">Read</a>
+                </div>
+            </div>
+            <div class="div3">
+                <!-- Content for Directory Mail -->
+                <rssapp-list id="t419OZpmG8zTCqzr"></rssapp-list>
+                <script src="https://widget.rss.app/v1/list.js" type="text/javascript" async></script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

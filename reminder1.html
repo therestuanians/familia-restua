@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Restuanians Patch "14.0"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 20px; /* Add some padding */
+            color: #333;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #636267;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: #EB8E27;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 1rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-block; /* Aligns button naturally */
+			font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Additional styles for layout */
+        .container {
+            margin: 0 auto; /* Center container but not elements */
+            padding: 20px;
+            background-color: #F1F9EC;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for elevation */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            button {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WEBSITE REVAMP</h1>
+        <p>This website is revamped. Enjoy the new features of our website</p>
+        <button id="redirectButton">Return</button>
+    </div>
+
+    <script>
+        function redirectBasedOnDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            if (/mobile|android|iphone|ipad|ipod/.test(userAgent)) {
+                // Redirect to Facebook for mobile devices
+                window.location.href = "mobile-announcement.html";
+            } else {
+                // Redirect to YouTube for desktop devices
+                window.location.href = "desktop-announcement.html";
+            }
+        }
+
+        // Add event listener to the button
+        document.getElementById('redirectButton').addEventListener('click', redirectBasedOnDevice);
+    </script>
+</body>
+</html>
