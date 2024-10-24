@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to The Restuanians</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.png" type="image/png">
+  <style>
+    /* Style to make the page fullscreen with the background image */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('bgphoto.png') no-repeat center center/cover;
+      overflow: hidden;
+    }
+
+    #countdown {
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5); /* Slight transparent overlay */
+      padding: 30px;
+      border-radius: 15px;
+      color: white;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .timer {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .video-wrapper {
+      margin-top: 15px;
+    }
+
+    iframe {
+      border: none;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Countdown Section -->
+  <div id="countdown">
+    <h1>Launching Soon!</h1>
+    <div class="timer" id="timer"></div>
+
+    <!-- YouTube Video Embed -->
+    <div class="video-wrapper">
+      <iframe width="560" height="315" 
+        src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&controls=0" 
+        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+    // Set the launch date: October 25, 2024 at midnight
+    const launchDate = new Date('2024-11-01T00:00:00').getTime();
+    const timerElement = document.getElementById('timer');
+
+    // Update the countdown every second
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const timeLeft = launchDate - now;
+
+      // Calculate days, hours, minutes, and seconds
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      // Display the countdown
+      timerElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      // Redirect to the homepage when the countdown is over
+      if (timeLeft < 0) {
+        clearInterval(interval);
+        window.location.href = "homepage.html";
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
