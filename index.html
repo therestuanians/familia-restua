@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to The Restuanians</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="icon" href="favicon.png" type="image/png">
+  
   <style>
-    /* Style to make the page fullscreen with the background image */
+    /* Global Styles */
     body {
       font-family: 'Montserrat', sans-serif;
       margin: 0;
@@ -22,10 +23,11 @@
 
     #countdown {
       text-align: center;
-      background-color: rgba(0, 0, 0, 0.5); /* Slight transparent overlay */
+      background-color: rgba(0, 0, 0, 0.5);
       padding: 30px;
       border-radius: 15px;
       color: white;
+      max-width: 90%; /* Limits width on small screens */
     }
 
     h1 {
@@ -42,29 +44,59 @@
       margin-top: 15px;
     }
 
-    iframe {
+    /* Responsive iframe */
+    .video-wrapper iframe {
+      width: 100%;
+      height: auto;
+      max-width: 560px;
+      aspect-ratio: 16/9;
       border: none;
       border-radius: 10px;
     }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      .timer {
+        font-size: 1.5rem;
+      }
+      #countdown {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .timer {
+        font-size: 1.2rem;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <!-- Countdown Section -->
   <div id="countdown">
-    <h1>Launching Soon!</h1>
+    <h1>The Revamp is now here !!!</h1>
     <div class="timer" id="timer"></div>
 
     <!-- YouTube Video Embed -->
     <div class="video-wrapper">
-      <iframe width="560" height="315" 
-        src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&controls=0" 
-        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe 
+        src="https://www.youtube.com/embed/GQH0jo7ju_Y?autoplay=1&mute=1&controls=0" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+      </iframe>
     </div>
   </div>
 
   <script>
-    // Set the launch date: October 25, 2024 at midnight
+    // Set the launch date: November 1, 2024 at midnight
     const launchDate = new Date('2024-11-01T00:00:00').getTime();
     const timerElement = document.getElementById('timer');
 
