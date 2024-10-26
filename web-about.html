@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+	<link rel="icon" href="./favicon.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            padding: 10px;
+        }
+
+        .header {
+            background-color: #7a7a7a;
+            height: 200px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+			color: #636267;
+        }
+		
+		.head-title {
+            text-align: center;
+			font-weight: 200;
+            font-size: 50px;
+			color: #636267;
+        }
+
+        .story {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+            gap: 10px;
+        }
+
+        .box {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            flex: 1 1 300px; /* Allow flex items to grow and shrink, with a base width of 300px */
+            height: auto; /* Allow height to adjust based on content */
+            min-width: 200px; /* Minimum width for smaller screens */
+        }
+
+        .box.story {
+            font-weight: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13.5px;
+            text-align: justify;
+            padding: 15px;
+			color: #636267;
+			background-color: #F1F9EC;
+        }
+
+        .box.pic {
+            cursor: pointer;
+        }
+
+        .box img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Modal styles for Storyboard */
+        .story-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+        }
+
+        .story-modal-content {
+            margin: auto;
+            display: block;
+            max-width: 100%; /* Prevent overflow */
+            max-height: 100%; /* Maintain aspect ratio */
+        }
+
+        .story-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .story-close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #FFD726;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+            margin-bottom: 2rem;
+            border-radius: 25px;
+        }
+
+        .navbar-title {
+            font-size: 1.5rem;
+            color: #FFF;
+            text-transform: uppercase;
+        }
+
+        .exit-btn {
+            padding: 0.4rem 1.5rem;
+            font-size: 1.2rem;
+            background-color: #EB8E27;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+		
+		/*Core Values Style */
+		h2 {
+		margin-top: 30px;
+		font-size: 30px;
+		font-weight: 200;
+		color: #636267;
+		}
+
+		.core {
+		display: flex;
+		justify-content: center;
+		gap: 15px;
+		margin: 40px auto;
+		max-width: 1200px;
+		font-family: 'Montserrat', sans-serif;
+		}
+
+		.card {
+		background-color: #F1F9EC;
+		border-radius: 15px;
+		padding: 20px;
+		width: 18%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		}
+
+		.core-image {
+		display: flex; /* Align images horizontally */
+		flex-wrap: wrap; /* Wrap images if they overflow */
+		gap: 10px; /* Add space between images */
+		width: 100%;
+		border-radius: 10px;
+		overflow: hidden; /* Ensure rounded corners are respected */
+		margin-bottom: 15px;
+		}
+
+		.core-image img {
+		flex: 1 1 calc(50% - 10px); /* Adjusts image width, 2 per row */
+		height: 150px;
+		object-fit: cover; /* Ensures the image fits without distortion */
+		border-radius: 8px; /* Individual rounded corners for each image */
+		}
+
+		.core-btn {
+		background-color: #EB8E27;
+		color: white;
+		border: none;
+		border-radius: 20px;
+		padding: 10px 20px;
+		cursor: pointer;
+		margin-top: 10px;
+		font-family: 'Montserrat', sans-serif;
+		}
+
+
+		/* Modal Styles */
+		.core-modal {
+		display: none; /* Hidden by default */
+		position: fixed;
+		z-index: 1;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.7);
+		align-items: center;
+		justify-content: center;
+		}
+
+		.core-modal-content {
+		background-color: #F1F9EC;
+		padding: 20px;
+		border-radius: 15px;
+		width: 80%;
+		max-width: 600px;
+		text-align: center;
+		color: black;
+		position: relative;
+		}
+
+		.core-close {
+		background-color: #333;
+		color: white;
+		border: none;
+		border-radius: 50%;
+		width: 30px;
+		height: 30px;
+		font-size: 18px;
+		cursor: pointer;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		}
+		
+		p {
+		text-align: justify;
+		text-justify: inter-word;
+		color: #636267;
+		}
+		
+		ul {
+		list-style-position: inside; /* Moves bullets inside the padding */
+		padding-left: 10px; /* Adjusts the spacing from the left edge */
+		margin: 10px 0; /* Adds spacing above and below the list */
+		text-align: justify;
+		text-justify: inter-word;
+		color: #636267;
+		}
+		
+    </style>
+</head>
+<body>
+		<nav class="navbar">
+            <div class="navbar-title">ABOUT US</div>
+            <div class="buttons">
+                <button class="exit-btn" onclick="window.location.href='homepage.html'">×</button>
+            </div>
+        </nav>
+    <div class="story">
+        <div class="head-title">OUR STORY</div>
+        <div class="row">
+            <div class="box story">
+                <div class="title">First Generation (Alcantara-Restua)</div>
+			Our beloved Restua family has evolved through the years; it has generations 
+			that represent how our family has grown up since 1945. Every name, event, 
+			and memory were written by our own family history. This is our family history. 
+			Our family traced the roots of the child named Benjamin, who is our great-grandfather. 
+			He was a homeless child before being adopted by a Chinese family named Restua, from which 
+			our surnames or middle names were inherited. After the years, he met and married Serafina 
+			Alcantara-Restua, who is our great grandmother, and they have 11 children named Nory, Hermie, 
+			Raymundo, Leonardo, Lito, Elvie, Apple, Luz, Sapa, Danilo Sr., and Benser. During the time of 
+			the war (World War 2), Benjamin kept his family in safety by hiding in the cave, and our great-grandfather
+			Benjamin shot a shrapnel gun by an unknown gunman. Benjamin was a simple businessman before. After his death, 
+			they lived with their family peacefully until they married and had children. 
+            </div>
+            <div class="box pic" onclick="openpicModal('1stgen.png')">
+                <img src="1stgen.png" alt="First Generation Image">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box pic" onclick="openpicModal('2ndgen.png')">
+                <img src="2ndgen.png" alt="Second Generation Image">
+            </div>
+            <div class="box story"> 
+			<div class="title">Second Generation (Tagupa - Restua)</div>
+			Our grandfather, Leonardo Alcantara-Restua, was a construction worker. 
+			He met and married our grandmother, Maria Tagupa-Restua in the city of Manily and they had four children, 
+			named Edwin, Jack, Lilibeth, and Anita. The four children were taught by our grandfather the importance of family values 
+			such as faithfulness, love, unity, respect, and servanthood. Second-generation family members were disciplined 
+			before they followed the rules imposed by their parents as well as Grandpa Leony and Grandma Maria are strict parents
+			. Still, they do their best to work and take care of the family and earn a living through laundry services, selling food, 
+			and freelance carpentry work. Danilo Restua Jr. who is originally the child of Danilo Restua Sr., has been with the siblings 
+			since he was in first grade when Leonardo and Maria took care of him. Leonardo suddenly had a heart attack 
+			while he was giving Lilibeth some cash for her work and taking some rest. The whole family rushed him to the Philippine Heart Center, and 
+			they did their best to survive his life by pumping his heart until he passed away on June 16, 1996. 
+        </div>
+        
+        <div class="row">
+            <div class="box story">
+            <div class="title">Present Generation (Leony - Maria Clan)</div>
+			The third generation of family members were once called as "Teammates" started with Jerome Juliano Restua, who was born on November 28, 1994. 
+			It was only Jerome who reached the life and death of Leonardo. After the death of Grandpa Leony, 
+			members of the third generation increased, including Kathleen Linga Restua (1998), 
+			Joan Restua Lalog (June 2000), Joseph Restua and Jefferson Restua (October 2000), 
+			Michael Iven Restua Gohilde (2001), Jonard Restua Lalog (May 2002), Jaclyn Ann Juliano Restua (November 2002), 
+			Mikaella Ivee Restua Gohilde (2004), Jeneth Restua Lalog (2005), Jhasmin Mae Juliano Restua (2006), 
+			Miguel Gabriel Restua Gohilde (2008), and David Nash Linga Restua (2010). Margarette Simon Restua (2014), 
+			Samantha Simon Restua (2017) and Adelaine Simon Restua (2023), who are the children of Uncle Danilo and Aunt Mary Anne, 
+			were added to the lists of cousins. Since 2017 The entire teammates build the "Fourth Generation" by welcoming acquaintances
+			or legalizing romantic relationship of each cousins. Our family persevered with the values and attitudes that our ancestors had left behind 
+			through our combined efforts. The Restua family's story is more than simply their past; it's a continuous journey 
+			filled with lessons learned, unforgettable moments, and an enduring bond that spans generations. 
+            </div>
+            <div class="box pic" onclick="openpicModal('presentgen.jpg')">
+                <img src="presentgen.jpg" alt="Present Generation Image">
+            </div>
+        </div>
+	</div>
+	</div>
+	<br>
+	<br>
+		<div class="head-title">CORE VALUES</div>
+		  <div class="core">
+	<br>
+    <div class="card">
+      <div class="core-image"><img src="core1.png" alt="Image 1"></div>
+	  Faithfulness
+      <button class="core-btn" onclick="opencoreModal(1)">Read</button>
+    </div>
+
+    <div class="card">
+      <div class="core-image"><img src="core2.png" alt="Image 1"></div>
+	  Love
+      <button class="core-btn" onclick="opencoreModal(2)">Read</button>
+    </div>
+
+    <div class="card">
+      <div class="core-image"><img src="core3.png" alt="Image 1"></div>
+	  Respect
+      <button class="core-btn" onclick="opencoreModal(3)">Read</button>
+    </div>
+
+    <div class="card">
+      <div class="core-image"><img src="core4.png" alt="Image 1"></div>
+	  Unity
+      <button class="core-btn" onclick="opencoreModal(4)">Read</button>
+    </div>
+
+    <div class="card">
+      <div class="core-image"><img src="core5.png" alt="Image 1"></div>
+	  Servanthood
+      <button class="core-btn" onclick="opencoreModal(5)">Read</button>
+    </div>
+  </div>
+
+  <!-- Core Values Modals -->
+  <div id="coremodal1" class="core-modal">
+    <div class="core-modal-content">
+      <button class="core-close" onclick="closecoreModal(1)">&times;</button>
+      <h2>FAITHFULNESS</h2><br>
+	  <p>Our first core value is faithfulness. Being a child to our Lord Jesus Christ must be a 
+	  principle to every member of this clan. Being faithful to our Lord through doctrines and 
+	  dogma could make the clan transformed and love would prevails in the clan. Without the faithfulness 
+	  to our lord and savior we will be committed to many sins and there will be no love to manifest 
+	  in this clan.</p><br>
+	  <ul>
+		<li>I will respect the beliefs of our family</li>
+		<li>I will be thankful to God for what he has given me and guiding for me everyday</li>
+	  </ul>
+    </div>
+  </div>
+
+  <div id="coremodal2" class="core-modal">
+    <div class="core-modal-content">
+      <button class="core-close" onclick="closecoreModal(2)">&times;</button>
+      <h2>LOVE</h2><br>
+	  <p>Our second core value is love. It is next to the faithfulness of our lord. 
+	  According to the certain saying, “A family that loves together stays forever”. 
+	  We should manifest the spirit of love in this clan and every member must love his own 
+	  brothers or sisters. We are loved by our lord it means we should love our brothers and 
+	  sisters in times of crisis or in wealth. Without love manifesting in this family there is no 
+	  unity, before going to the spirit of unity love must manifest first.</p><br>
+	  <ul>
+		<li>I will love and listen my family always</li>
+		<li>I will be faithful and loyal to my partner always</li>
+		<li>I will be honest and clean to my family and also to the person(s) that surrounds me</li>
+	  </ul>
+    </div>
+  </div>
+
+  <div id="coremodal3" class="core-modal">
+    <div class="core-modal-content">
+      <button class="core-close" onclick="closecoreModal(3)">&times;</button>
+      <h2>RESPECT</h2><br>
+	  <p>Our third core value is respect. It is next to the love. Loving the family means 
+	  you should also respect your family. Respect implies accepting someone for who they are, 
+	  even if they are different from you or have different opinions than you. Respect enhances 
+	  emotions of safety, security, and wellbeing in your interactions to the family itself. 
+	  We should not only respect the family but also the persons around us and the environment</p><br>
+	  <ul>
+		<li>I will respect my family and our relatives</li>
+		<li>I will give respect to the environment and to the people who deserves my respect</li>
+	  </ul>
+    </div>
+  </div>
+
+  <div id="coremodal4" class="core-modal">
+    <div class="core-modal-content">
+      <button class="core-close" onclick="closecoreModal(4)">&times;</button>
+      <h2>UNITY</h2><br>
+	  <p>Our third core value is unity. When love and respect manifests in the clan unity must be next. 
+	  We are in one blood, one soul and one family. We should unite each other, persons with the same surnames 
+	  flock together. A family should and must start with unity in order to connect, define themselves, and 
+	  support one another. God has provided parents and children with a wealth of guidance on their interactions 
+	  within their homes. We can only manage these connections properly and in a way that pleases the Lord if we 
+	  work together as a team.</p><br>
+	  <ul>
+		<li>I will be one with the ideals and dreams of the family</li>
+		<li>I will help my family member without hesitations</li>
+		<li>I must know the family background and learn the lesson from it</li>
+		<li>I will sympathize with my family when they are facing problems.</li>
+	  </ul>
+    </div>
+  </div>
+
+  <div id="coremodal5" class="core-modal">
+    <div class="core-modal-content">
+      <button class="core-close" onclick="closecoreModal(5)">&times;</button>
+      <h2>SERVANTHOOD</h2><br>
+	  <p>Our fourth value is servanthood. Through the manifestation of servanthood in the family we are helping each 
+	  other to raise them up. Helping each other in times of need must be seen in the family next to our community. 
+	  The family is the smallest unit of the society thus servanthood must applied in the clan first. 
+	  By manifesting servanthood we are able to help in the persons that surrounds us.</p><br>
+	  <ul>
+		<li>I will be a law - abiding family member</li>
+		<li>I should give accountability to my obligations</li>
+		<li>I will be accountable to my actions that I have done</li>
+	  </ul>
+    </div>
+  </div>
+		
+    </div>
+
+    <div id="myModal" class="story-modal">
+        <span class="story-close" onclick="closepicModal()">&times;</span>
+        <img class="story-modal-content" id="img01">
+    </div>
+	
+	<br>
+	<br>
+	<div class="familytree">
+	<div class="head-title">FAMILY TREE</div>
+	COMING SOON
+	</div>
+
+    <script>
+        function openpicModal(src) {
+            document.getElementById("myModal").style.display = "block";
+            document.getElementById("img01").src = src;
+            document.getElementById("caption").innerHTML = " ";
+        }
+
+        function closepicModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+		
+		function opencoreModal(modalNumber) {
+      document.getElementById('coremodal' + modalNumber).style.display = 'flex';
+    }
+
+    function closecoreModal(modalNumber) {
+      document.getElementById('coremodal' + modalNumber).style.display = 'none';
+    }
+
+    // Close the modal when clicking outside of it
+    window.onclick = function(event) {
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(modal => {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
+      });
+    }
+    </script>
+</body>
+</html>

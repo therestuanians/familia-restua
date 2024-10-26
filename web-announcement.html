@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+	<link rel="icon" href="./favicon.png" type="image/png">
+    <title>Family Hub</title>
+    <style>
+	html, body, .parent {
+		font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+		background-color: #F1F9EC;
+	}
+		/* Navbar Styles */
+		.navbar {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0.5rem 1rem;
+			background-color: #FFD726;
+			box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+			margin: 20px 20px 2rem;
+			border-radius: 25px;
+		}
+
+		.navbar-title {
+			font-size: 1.5rem;
+			color: #FFF;
+			text-transform: uppercase;
+			margin-right: auto; /* Push buttons to the right */
+		}
+
+		.exit-btn {
+			padding: 0.4rem 1.5rem;
+			font-size: 1.2rem;
+			background-color: #EB8E27;
+			color: #fff;
+			border: none;
+			border-radius: 25px;
+			cursor: pointer;
+			text-decoration: none;
+			margin-left: 0.5rem; /* Add space between buttons */
+		}
+		
+		/* Marquee Styles */
+		.marquee {
+			background-color: #EB8E27;
+			color: white;
+			padding: 10px 0;
+			overflow: hidden;
+			white-space: nowrap;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+			position: relative;
+		}
+
+		/* Add space around and align marquee content to left start */
+		.marquee-content {
+			display: inline-block;
+			animation: marquee 35s linear infinite;
+			padding-left: 100%; /* Start off-screen to the right */
+		}
+
+		@keyframes marquee {
+			0% { transform: translateX(0); }  /* Start from the right edge */
+			100% { transform: translateX(-100%); }  /* Move to the left */
+		}
+
+		/* Optional: Hover to pause marquee */
+		.marquee-content:hover {
+			animation-play-state: paused;
+		}
+
+		.parent {
+			display: grid;
+			grid-template-columns: repeat(6, 1fr);
+			grid-template-rows: repeat(9, 1fr);
+			grid-column-gap: 2px;
+			grid-row-gap: 2px;
+		}
+
+        .parent div {
+            text-align: center; /* Centered text */
+            font-weight: bold; /* Bold text */
+        }
+
+        .div1 {
+			background-color: #EB8E27;
+			display: flex;
+			justify-content: center; /* Horizontally center the content */
+			align-items: center; /* Vertically center the content */
+			height: 100%; /* Make sure it occupies the full height of its container */
+			text-align: center; /* Ensure text is also centered, if applicable */
+			border: 1px solid #000;
+        }
+
+        .div2 {
+            background-color: #131224;
+            padding: 20px;
+			overflow: hidden;
+			max-height:473px;
+			overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        .div7 {
+			  grid-area: 7 / 1 / 10 / 2;  /* Adjusts this to your grid position */
+			  display: flex;
+			  flex-direction: column;
+			  align-items: center;
+			  justify-content: center;
+			  padding: 20px;
+			  background: #DAF7A6;  /* Soft color background */
+			  color: #333;  /* Text color for contrast */
+			  font-family: 'Montserrat', sans-serif;
+			  text-align: center;
+		}
+
+		h2 {
+		  font-size: 1.5em;
+		  color: #1e3799;  /* Accent color for the title */
+		  margin-bottom: 10px;
+		}
+
+		.quote {
+		  font-style: italic;
+		  font-size: 1.2em;
+		  color: #6D6875;  /* Color for the quote text */
+		  margin: 0;
+		}
+
+        .div8 {
+            background-color: #000000; /* Dark Purple */
+            padding: 10px;
+        }
+
+		.div10 {
+			background-color: #F1F9EC;
+			display: flex;
+			flex-direction: column;
+			padding: 5px;
+			max-height: 503px; /* Increase the max-height to allow more room */
+			height: 100%; /* Allow it to grow dynamically */
+			overflow-y: auto; /* Enable vertical scrolling */
+			font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+		}
+		
+		/* Chat Messages Container */
+		.div10 .chat-messages {
+			overflow-y: auto; /* Allow scrolling for the messages area */
+			flex-grow: 1; /* Ensure it grows to fill available space */
+			text-align: left; /* Ensure all text stays aligned to the left */
+		}
+
+		/* Individual Chat Message */
+		.div10 .chat-message {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start; /* Align items at the top */
+			padding: 12px;
+			background-color: #FFA500;
+			border-radius: 15px;
+			margin-bottom: 5px;
+			font-size: 0.8em;
+			text-align: left; /* Align text left inside each message */
+			color: #fff;
+		}
+
+		/* Timestamp */
+		.timestamp {
+			font-size: 0.8em;
+			margin-left: 10px;
+			align-self: flex-end;
+			color: #fff; /* Corrected color to use a valid hex code */
+		}
+		
+		/* Chat Input Styles */
+		#nameInput, #messageText {
+			width: calc(100% - 50px);
+			padding: 5px;
+			border: 2px solid #FFD726;
+			border-radius: 8px;
+			font-size: 0.9em;
+			margin-bottom: 10px;
+			transition: border-color 0.3s, box-shadow 0.3s;
+			font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+		}
+
+		#nameInput:focus, #messageText:focus {
+			border-color: #FFA500;
+			box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+		}
+
+		/* Send Button */
+		#sendButton {
+			padding: 0.5rem;
+			font-size: 1rem;
+			background-color: #EB8E27;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+		}
+
+		 .div9 {
+			background-color: #F1F9EC;
+			padding: 10px;
+			max-width: 100%;
+			overflow: hidden;
+			overflow-x: auto;
+		}
+	
+		.div11 {
+			grid-area: 1 / 1 / 7 / 2; /* Grid area positioning */
+			background-color: #F339EC;
+			max-height: 410px;
+			max-width: 500px;
+			overflow: hidden;
+		}
+		
+		
+		.div1 { grid-area: 1 / 1 / 2 / 2; }
+		.div2 { grid-area: 2 / 1 / 7 / 2; }
+		.div7 { grid-area: 7 / 1 / 10 / 2; }
+		.div8 { grid-area: 1 / 2 / 6 / 5; }
+		.div9 { grid-area: 6 / 2 / 10 / 5; }
+		.div10 { grid-area: 1 / 5 / 10 / 7; }
+		.div11 { grid-area: 6 / 5 / 10 / 7; }
+    </style>
+	
+	<script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+            import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyBW9I8ZpGQCYZH5n-us71Cfb_yunGMPCUs",
+                authDomain: "live-chat-testing-95232.firebaseapp.com",
+                projectId: "live-chat-testing-95232",
+                storageBucket: "live-chat-testing-95232.appspot.com",
+                messagingSenderId: "982255648611",
+                appId: "1:982255648611:web:da1255ce3152061e8a1d56"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+
+            // List of bad words to censor
+            const badWords = ['fuck', 'shit', 'cum']; // Replace with actual bad words
+
+            // Function to censor bad words
+            const censorBadWords = (message) => {
+                const regex = new RegExp(`\\b(${badWords.join('|')})\\b`, 'gi');
+                return message.replace(regex, (matched) => '*'.repeat(matched.length));
+            };
+
+            const sendMessage = async () => {
+                const nameInput = document.getElementById('nameInput');
+                const messageInput = document.getElementById('messageText');
+
+                const senderName = nameInput.value.trim();
+                let messageText = messageInput.value.trim();
+
+                if (senderName && messageText) {
+                    // Censor the message text
+                    messageText = censorBadWords(messageText);
+
+                    await addDoc(collection(db, 'messages'), {
+                        senderName,
+                        text: messageText,
+                        timestamp: new Date()
+                    });
+                    messageInput.value = ''; // Clear input field after sending
+                }
+            };
+
+            // Save the user's name to local storage
+            const nameInput = document.getElementById('nameInput');
+            nameInput.addEventListener('input', () => {
+                localStorage.setItem('username', nameInput.value);
+            });
+
+            // Load the user's name from local storage when the page loads
+            window.onload = () => {
+                const savedName = localStorage.getItem('username');
+                if (savedName) {
+                    nameInput.value = savedName;
+                }
+            };
+
+            const displayMessages = () => {
+                const chatMessages = document.getElementById('chatMessages');
+                const q = query(collection(db, 'messages'), orderBy('timestamp'));
+
+                onSnapshot(q, (snapshot) => {
+                    chatMessages.innerHTML = ''; // Clear previous messages
+                    snapshot.forEach((doc) => {
+                        const msg = doc.data();
+                        const messageElement = document.createElement('div');
+                        messageElement.classList.add('chat-message');
+                        messageElement.innerHTML = `<span>${msg.senderName}: ${msg.text}</span>
+                                                    <span class="timestamp">${new Date(msg.timestamp.seconds * 1000).toLocaleTimeString()}</span>`;
+                        chatMessages.appendChild(messageElement);
+                    });
+                    chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to latest message
+                });
+            };
+
+            document.getElementById('sendButton').addEventListener('click', sendMessage);
+            displayMessages();
+        </script>
+		
+</head>
+<body>
+<nav class="navbar">
+	<div class="navbar-title">Family Hub</div>
+	<button class="exit-btn" onclick="window.location.href='homepage.html'">×</button>
+</nav>
+
+<div class="marquee">
+    <div class="marquee-content">Undas 2024 and we need to clean grandpa's tomb &nbsp Welcome to the Announcements Section watch our livestream and keep active in our
+	livechat now with services section where you can be updated to the weather and calendar as well as to our announcements</div>
+</div>
+<br>
+<div class="parent">
+
+    <div class="div1">
+		<script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+		<div class="commonninja_component pid-c3419db8-2d5d-4a96-9d0d-d81eaf68920f"></div>
+	</div>
+	
+    <div class="div2">
+	<script>
+        (function(d, s, id) {
+            if (d.getElementById(id)) {
+                if (window.__TOMORROW__) {
+                    window.__TOMORROW__.renderWidget();
+                }
+                return;
+            }
+            const fjs = d.getElementsByTagName(s)[0];
+            const js = d.createElement(s);
+            js.id = id;
+            js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+
+            fjs.parentNode.insertBefore(js, fjs);
+        })(document, 'script', 'tomorrow-sdk');
+        </script>
+
+        <div class="tomorrow"
+           data-location-id="084699,084191,083524,084948,082137,102894"
+           data-language="EN"
+           data-unit-system="METRIC"
+           data-skin="dark"
+           data-widget-type="current6"
+           style="padding-bottom:22px;position:relative;"
+        >
+          <a
+            href="https://www.tomorrow.io/weather-api/"
+            rel="nofollow noopener noreferrer"
+            target="_blank"
+            style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
+          >
+            <img
+              alt="Powered by the Tomorrow.io Weather API"
+              src="https://weather-website-client.tomorrow.io/img/powered-by.svg"
+              width="250"
+              height="18"
+            />
+          </a>
+        </div>
+	
+	</div>
+	
+	<div class="div7">
+	<h2>Daily Nugget</h2>
+	<p id="nuggetBox" class="quote">"Your daily quote goes here!"</p>
+	<script src="dailynugget.js"></script>
+	</div>
+	
+    <div class="div8">
+	<!-- YouTube video embed -->
+      <iframe 
+         width="100%" 
+         height="485"
+         src="https://www.youtube.com/embed/GQH0jo7ju_Y?si=f47n29GilvG2yykw&autoplay=1&mute=1&loop=1&playlist=nGDe0O5Tdbk" 
+         frameborder="0" 
+         allow="autoplay; encrypted-media; picture-in-picture" 
+         allowfullscreen>
+      </iframe>
+	</div>
+	
+    <div class="div9">
+	<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FManila&showPrint=0&src=dGhlcmVzdHVhbmlhbnNAZ21haWwuY29t&src=ZW4ucGhpbGlwcGluZXMjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23F4511E&color=%23D50000" width="700" height="360" frameborder="0" scrolling="no"></iframe>
+	</div>
+	  
+    <div class="div10">
+		<div class="chat-messages" id="chatMessages"></div><br>
+		<input type="text" id="nameInput" placeholder="Your name" required maxlength="15">
+        <input type="text" id="messageText" placeholder="Type a message (max 50 chars)" required maxlength="50">
+        <button id="sendButton">Send</button> 
+	</div>
+	
+    <div class="div11">
+	<!-- News Pane -->
+		<rssapp-list id="thGCT74oGsgs73bQ"></rssapp-list><script src="https://widget.rss.app/v1/list.js" type="text/javascript" async></script>
+	</div>
+
+</div>
+
+</body>
+</html>

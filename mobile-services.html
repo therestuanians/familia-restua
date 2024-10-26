@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Announcements</title>
+
+    <!-- Google Fonts (Light Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+	<link rel="icon" href="./favicon.png" type="image/png">
+	
+	<style>
+
+    /* Body Reset */
+        html, body .mobile{
+            height: 100%;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+			color: #fff; 
+        }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0.5rem 1rem;
+			background-color: #FFD726;
+			box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+			margin: 20px 20px 2rem; /* Add space from the top, left, and right */
+			border-radius: 25px;
+        }
+
+        .navbar-title {
+            font-size: 0.9rem;
+            color: #FFF;
+            text-transform: uppercase;
+        }
+
+        .serve-btn {
+            padding: 0.4rem 1.5rem;
+            font-size: 1.2rem;
+            background-color: #EB8E27;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+			text-decoration: none;
+        }
+
+
+        /* Parent Stack Container */
+        .parent {
+            display: block; /* Change to block for stacking */
+            max-width: 1000px; /* Set max width */
+            margin: 0 auto; /* Center align */
+            height: calc(100vh - 20px); /* Full screen height minus padding */
+            padding: 10px; /* Small gaps on edges of the screen */
+            box-sizing: border-box; /* Include padding in height/width calculations */
+        }
+		
+		.div1{
+			background: #131224;  /* Soft color background */
+		}
+		
+			
+        /* Google Calendar */
+        .div2 {
+			  background-color: #F1F9EC;
+			  display: flex;            /* Use Flexbox for alignment */
+			  align-items: center;      /* Center vertically */
+			  justify-content: center;  /* Center horizontally */
+			  overflow: hidden;
+        }
+		
+		.div2 iframe {
+			  width: 100%;              /* Scale to parent width */
+			  max-width: 700px;         /* Limit maximum width */
+			  height: 360px;            /* Fixed height */
+			  border: none;
+		}
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .parent {
+                padding: 5px; /* Adjust padding for smaller screens */
+            }
+            #nameInput, #messageText {
+                width: calc(100% - 30px); /* Adjust width for mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            #nameInput, #messageText {
+                width: calc(100% - 20px); /* Adjust width for mobile */
+            }
+        }
+		
+		</style>
+		
+</head>
+<body>
+    <div class="mobile">
+        <nav class="navbar">
+            <div class="navbar-title">Services</div>
+            <button class="serve-btn" onclick="window.location.href='mobile-announcement.html'">×</button>
+        </nav>
+
+        <div class="parent">
+			<div class="div1">
+		<script>
+        (function(d, s, id) {
+            if (d.getElementById(id)) {
+                if (window.__TOMORROW__) {
+                    window.__TOMORROW__.renderWidget();
+                }
+                return;
+            }
+            const fjs = d.getElementsByTagName(s)[0];
+            const js = d.createElement(s);
+            js.id = id;
+            js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+
+            fjs.parentNode.insertBefore(js, fjs);
+        })(document, 'script', 'tomorrow-sdk');
+        </script>
+
+        <div class="tomorrow"
+           data-location-id="084699,084191,083524,084948,082137,102894"
+           data-language="EN"
+           data-unit-system="METRIC"
+           data-skin="dark"
+           data-widget-type="current6"
+           style="padding-bottom:22px;position:relative;"
+        >
+          <a
+            href="https://www.tomorrow.io/weather-api/"
+            rel="nofollow noopener noreferrer"
+            target="_blank"
+            style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
+          >
+            <img
+              alt="Powered by the Tomorrow.io Weather API"
+              src="https://weather-website-client.tomorrow.io/img/powered-by.svg"
+              width="250"
+              height="18"
+            />
+          </a>
+        </div>
+			</div>
+			<br>
+            <div class="div2">
+                <iframe src="https://calendar.google.com/calendar/embed?height=500&wkst=1&ctz=Asia%2FManila&showPrint=0&src=dGhlcmVzdHVhbmlhbnNAZ21haWwuY29t&src=ZW4ucGhpbGlwcGluZXMjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23F4511E&color=%23D50000" style="border:solid 1px #777" width="300" height="200" frameborder="0" scrolling="no"></iframe>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
