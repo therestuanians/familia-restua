@@ -16,7 +16,7 @@ const dailyNuggets = [
   "Ang pagsasama ng pamilya ay nagbibigay ng saya at ligaya.", // 12
   "Family means no one gets left behind or forgotten.", // 13
   "Ang pagmamahal ng pamilya ay nagbibigay ng lakas sa atin.", // 14
-  "The best family is the one that can support each other through life's ups and downs." // 15
+  "The best family is the one that can support each other through life's ups and downs.", // 15
   "Ang tahanan ay kung saan naroroon ang iyong pamilya.", // 16
   "Family is the heart of a home.", // 17
   "Ang pamilya ay ang ating unang guro sa buhay.", // 18
