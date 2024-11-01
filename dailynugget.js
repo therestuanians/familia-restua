@@ -6,17 +6,17 @@ const dailyNuggets = [
   "Ang pamilya ang pinakamahalagang kayamanan sa buhay.", // 2
   "The love of a family is life's greatest blessing.", // 3
   "Sa pamilya, nag-uumpisa ang tunay na pagmamahal.", // 4
-  "In family life, love is the oil that eases friction, the cement that binds closer together, and the music that brings harmony.", // 5
+  "A family in harmony will prosper in everything.", // 5
   "Pamilya: kung saan nagsisimula ang buhay at ang pag-ibig ay hindi kailanman nagtatapos.", // 6
-  "Family is the compass that guides us; they are the inspiration to reach great heights, and our comfort when we occasionally falter.", // 7
+  "The family is the first essential cell of human society", // 7
   "Walang perpektong pamilya, pero ang tunay na pamilya ay nagtutulungan sa hirap at ginhawa.", // 8
   "The family is one of nature's masterpieces.", // 9
   "Ang pamilya ay tahanan ng pagmamahalan at suporta.", // 10
   "A happy family is but an earlier heaven.", // 11
-  "Ang pamilya ang kompas na nagtuturo sa atin. Sila ang inspirasyon upang maabot ang mataas na tagumpay, at ang ating kaginhawahan sa mga pagkakataong tayo'y nadadapa.", // 12
+  "Ang pagsasama ng pamilya ay nagbibigay ng saya at ligaya.", // 12
   "Family means no one gets left behind or forgotten.", // 13
   "Ang pagmamahal ng pamilya ay nagbibigay ng lakas sa atin.", // 14
-  "There is no such thing as a perfect family. The best family is the one that can support each other through life's ups and downs.", // 15
+  "The best family is the one that can support each other through life's ups and downs." // 15
   "Ang tahanan ay kung saan naroroon ang iyong pamilya.", // 16
   "Family is the heart of a home.", // 17
   "Ang pamilya ay ang ating unang guro sa buhay.", // 18
@@ -32,7 +32,7 @@ const dailyNuggets = [
   "Walang katumbas na kayamanan ang pagmamahal ng pamilya.", // 28
   "Family is the foundation upon which we build our lives.", // 29
   "Ang pamilya ay ang ating lakas sa bawat pagsubok.", // 30
-  "The greatest gift of family life is to be intimately acquainted with people you might never even introduce yourself to, had life not brought you together.", // 31
+  "Family and friendships are two of the greatest facilitators of happiness.", // 31
   "Ang pagsasama ng pamilya ay nagbibigay ng saya at ligaya." // 32
 ];
 
