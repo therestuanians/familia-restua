@@ -21,7 +21,7 @@
       overflow: hidden;
     }
 
-    #countdown {
+    #welcome-message {
       text-align: center;
       background-color: rgba(0, 0, 0, 0.5);
       padding: 30px;
@@ -35,34 +35,12 @@
       margin-bottom: 10px;
     }
 
-    .timer {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    .video-wrapper {
-      margin-top: 15px;
-    }
-
-    /* Responsive iframe */
-    .video-wrapper iframe {
-      width: 100%;
-      height: auto;
-      max-width: 560px;
-      aspect-ratio: 16/9;
-      border: none;
-      border-radius: 10px;
-    }
-
     /* Media Queries */
     @media (max-width: 768px) {
       h1 {
         font-size: 2.5rem;
       }
-      .timer {
-        font-size: 1.5rem;
-      }
-      #countdown {
+      #welcome-message {
         padding: 20px;
       }
     }
@@ -71,55 +49,22 @@
       h1 {
         font-size: 2rem;
       }
-      .timer {
-        font-size: 1.2rem;
-      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Countdown Section -->
-  <div id="countdown">
-    <h1>The Revamp is now here !!!</h1>
-    <div class="timer" id="timer"></div>
-
-    <!-- YouTube Video Embed -->
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/GQH0jo7ju_Y?autoplay=1&mute=1&controls=0&loop=1&playlist=GQH0jo7ju_Y" 
-        allow="autoplay; encrypted-media" 
-        allowfullscreen>
-      </iframe>
-    </div>
+  <!-- Welcome Message Section -->
+  <div id="welcome-message">
+    <h1>Welcome Teammates!</h1>
   </div>
 
   <script>
-    // Set the launch date: October 27, 2024 at midnight
-    const launchDate = new Date('2024-10-27T00:00:00').getTime();
-    const timerElement = document.getElementById('timer');
-
-    // Update the countdown every second
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const timeLeft = launchDate - now;
-
-      // Calculate days, hours, minutes, and seconds
-      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-      // Display the countdown
-      timerElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-      // Redirect to the homepage when the countdown is over
-      if (timeLeft < 0) {
-        clearInterval(interval);
-        window.location.href = "homepage.html";
-      }
-    }, 1000);
+    // Redirect to the homepage after 1.5 seconds
+    setTimeout(() => {
+      window.location.href = "homepage.html";
+    }, 1500);
   </script>
 
 </body>
