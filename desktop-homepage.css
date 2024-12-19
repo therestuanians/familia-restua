@@ -16,7 +16,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('bgphoto.png');
+    background-image: url('xmasbg.png');
     background-size: cover; /* Cover the entire element */
     background-position: center; /* Center the background image */
     text-align: center;
