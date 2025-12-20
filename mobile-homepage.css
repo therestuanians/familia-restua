@@ -24,7 +24,7 @@
             display: flex;
             justify-content: space-around;
             width: 100%;
-            background-color: #7d7d7d;
+            background-color: #bededc;
             padding: 10px 0;
         }
 
@@ -64,14 +64,14 @@
         .welcome-section h1 {
             font-size: 47px;
             margin-bottom: 10px;
-            color: white;
+            color: #B91000;
 			text-align: center;
             font-family: 'Montserrat', sans-serif;
         }
 
         .welcome-section p {
             font-size: 15px;
-            color: white;
+            color: #4B5A37;
 			text-align: center;
             font-family: 'Montserrat', sans-serif;
         }
@@ -102,3 +102,4 @@
 .desktop {
     display: none;
 }
+
