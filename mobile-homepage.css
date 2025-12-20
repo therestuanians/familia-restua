@@ -14,7 +14,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #bededc;
+            background-color: #BEDEDC;
             height: 100vh;
             overflow: hidden;
         }
@@ -102,6 +102,7 @@
 .desktop {
     display: none;
 }
+
 
 
 
