@@ -16,7 +16,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('xmasbg.png');
+    background-image: url('tcd.png');
     background-size: cover; /* Cover the entire element */
     background-position: center; /* Center the background image */
     text-align: center;
@@ -70,6 +70,7 @@ i:hover {
 .mobile {
     display: none;
 }
+
 
 
 
