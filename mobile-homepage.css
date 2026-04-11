@@ -14,7 +14,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #0a1544;
+            background-color: #7d7d7d;
             height: 100vh;
             overflow: hidden;
         }
@@ -24,7 +24,7 @@
             display: flex;
             justify-content: space-around;
             width: 100%;
-            background-color: #0a1544;
+            background-color: #7d7d7d;
             padding: 10px 0;
         }
 
@@ -53,7 +53,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #0a1544;
+            background-color: #7d7d7d;
             width: 100%;
             height: 60%;
             text-align: center;
@@ -71,7 +71,7 @@
 
         .welcome-section p {
             font-size: 15px;
-            color: #ffe3ca;
+            color: #f2f2f2;
 			text-align: center;
             font-family: 'Montserrat', sans-serif;
         }
